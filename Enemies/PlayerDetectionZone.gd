@@ -7,9 +7,7 @@ func can_see_player():
 
 func _on_PlayerDetectionZone_body_entered(body):
 	player = body
-	pass # Replace with function body.
 
 
 func _on_PlayerDetectionZone_body_exited(body):
 	player = null
-	pass # Replace with function body.
