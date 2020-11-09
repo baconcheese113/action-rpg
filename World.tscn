@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/HealthUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Tree.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Camera2D.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -509,10 +510,14 @@ tile_data = PoolIntArray( -131064, 0, 0, -131063, 0, 1, -131062, 0, 2, -65536, 0
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="YSort"]
+[node name="Camera2D" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 144, 80 )
-current = true
-smoothing_enabled = true
+
+[node name="TopLeft" parent="YSort/Camera2D/Limits" index="0"]
+position = Vector2( -104, -88 )
+
+[node name="BottomRight" parent="YSort/Camera2D/Limits" index="1"]
+position = Vector2( 456, 256 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 144, 80 )
@@ -652,3 +657,5 @@ position = Vector2( 144, 144 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthUI" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[editable path="YSort/Camera2D"]
